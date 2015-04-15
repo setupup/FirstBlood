@@ -9,7 +9,7 @@ public:
 	char content() { return mContent; }
 	void setContent(char c){ mContent = c; }
 	bool wordMarker(){ return mMarker; }
-	void setWordMarker(){ mMarker = true; }
+	void setWordMarker(){ mMarker = true; }  //immediate or leaf
 	Node* findChild(char c);
 	void appendChild(Node* child) { mChildren.push_back(child); }
 	vector<Node*> children(){ return mChildren; }
@@ -70,7 +70,7 @@ void Trie::addWord(string s)
 			current = tmp;
 		}
 		if (i == s.length() - 1)
-			current->setWordMarker();
+			current->setWordMarker();  //set it as true as its a leaf
 	}
 }
 bool Trie::searchWord(string s)
@@ -82,13 +82,13 @@ bool Trie::searchWord(string s)
 		for (int i = 0; i < s.length(); i++)
 		{
 			Node* tmp = current->findChild(s[i]);
-			if (tmp = NULL)
+			if (tmp == NULL)
 				return false;
 			current = tmp;
 		}
-		if (current->wordMarker())
+		if (current->wordMarker()) //leaf
 			return true;
-		else
+		else //immediate
 			return false;
 	}
 	return false;
@@ -106,8 +106,8 @@ int main()
 	if (trie->searchWord("Helloo"))
 		cout << "Found Helloo" << endl;
 	if (trie->searchWord("Ball"))
-		cout << "Found Hell" << endl;
+		cout << "Found Ball" << endl;
 	if (trie->searchWord("Balloon"))
-		cout << "Found Hell" << endl;
+		cout << "Found Balloon" << endl;
 	delete trie;
 }
