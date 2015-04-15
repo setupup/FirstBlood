@@ -1,7 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
+class Leaf{
+public:
+	Leaf(){ //constructor
+		name = " ";
+		lat = 0;
+		lon = 0;
+	}
+	Leaf(string n, double la, double lo){
+		name = n;
+		lat = la;
+		lon = lo;
+	}
+	~Leaf(){ //destructor
 
+	}
+	string name;
+	double lat;
+	double lon;
+
+};
 class Node {  //Node defination //initial list
 public:
 	Node() { mContent = ' '; mMarker = false; }
@@ -11,20 +31,25 @@ public:
 	bool wordMarker(){ return mMarker; }
 	void setWordMarker(){ mMarker = true; }  //immediate or leaf
 	Node* findChild(char c);
-	void appendChild(Node* child) { mChildren.push_back(child); }
+	void appendChild(Node* child) { mChildren.push_back(child); }  //push an object into the vector(child)
 	vector<Node*> children(){ return mChildren; }
-private:
+	Leaf* leaf;
+	vector<Node*> getthemall(Node* current);
+
 	char mContent;
 	bool mMarker;
 	vector<Node*> mChildren;
+	
 };
+
 class Trie {   //Trie defination 
 public:
 	Trie();
 	~Trie();
-	void addWord(string s);
-	bool searchWord(string s);
+	void addWord(string s,double lat,double lon);
+	Node* searchWord(string s);
 	void deleteWord(string s);
+	void print(Node* resu);
 private:
 	Node* root;
 };
@@ -40,6 +65,36 @@ Node* Node::findChild(char c)
 	}
 	return NULL;
 }
+vector<Node*> Node::getthemall(Node* current)
+{
+	vector<Node*> record;
+	vector<Node*> arrayRes;
+	arrayRes = current->mChildren;
+	while (1)
+	{
+		int i = 0;
+		if (arrayRes[i]->mMarker == true)
+		{
+			record.push_back(arrayRes[i]);
+			i++;
+		}
+		/*
+		else if (arrayRes[i]->mMarker==false)
+		{
+			if ()
+			arrayRes.pop_back(arrayRes[i]);
+		}
+		else
+		{
+			break;
+		}
+		*/
+		
+	}
+	
+
+
+}
 Trie::Trie()
 {
 	root = new Node();
@@ -47,7 +102,19 @@ Trie::Trie()
 Trie::~Trie(){
 	//free memory
 }
-void Trie::addWord(string s)
+void Trie::print(Node* resu)
+{
+	if (resu)
+	{		
+		Leaf* res = resu->leaf;
+		cout << res->name << " " << res->lat << " " << res->lon << endl;
+	}
+	else{
+		cout << "seems that this word doesnt exist." << endl;
+	}
+
+}
+void Trie::addWord(string s,double lat,double lon)
 {
 	Node* current = root;
 	if (s.length() == 0)
@@ -69,11 +136,14 @@ void Trie::addWord(string s)
 			current->appendChild(tmp);
 			current = tmp;
 		}
-		if (i == s.length() - 1)
+		if (i == s.length() - 1){
+
 			current->setWordMarker();  //set it as true as its a leaf
+			current->leaf = new Leaf(s,lat,lon);
+		}
 	}
 }
-bool Trie::searchWord(string s)
+Node* Trie::searchWord(string s)
 {
 	//search function
 	Node* current = root;
@@ -83,31 +153,32 @@ bool Trie::searchWord(string s)
 		{
 			Node* tmp = current->findChild(s[i]);
 			if (tmp == NULL)
-				return false;
+				return NULL;
 			current = tmp;
 		}
 		if (current->wordMarker()) //leaf
-			return true;
+			return current;
 		else //immediate
-			return false;
+			return NULL; //return all the potential results
 	}
-	return false;
+	return current; //oversearch
 }
 int main()
 {
 	Trie* trie = new Trie();
-	trie->addWord("Hello");
-	trie->addWord("Balloon");
-	trie->addWord("Ball");
-	if (trie->searchWord("Hell"))
-		cout << "Found Hell" << endl;
-	if (trie->searchWord("Hello"))
-		cout << "Found Hello" << endl;
-	if (trie->searchWord("Helloo"))
-		cout << "Found Helloo" << endl;
-	if (trie->searchWord("Ball"))
-		cout << "Found Ball" << endl;
-	if (trie->searchWord("Balloon"))
-		cout << "Found Balloon" << endl;
+	trie->addWord("Hello",1,1);
+	trie->addWord("Balloon",2,2);
+	trie->addWord("Ball",3,3);
+	trie->addWord("Call", 4, 3);
+	trie->addWord("Darkness", 4, 3);
+	trie->print(trie->searchWord("Hello"));
+	trie->print(trie->searchWord("Ball"));
+	trie->print(trie->searchWord("Call"));
+	trie->print(trie->searchWord("Darkness"));
+	trie->print(trie->searchWord("Balloon"));
+	trie->print(trie->searchWord("Polymorph"));
+
+	
+
 	delete trie;
 }
