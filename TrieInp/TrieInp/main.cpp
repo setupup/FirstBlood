@@ -2,13 +2,13 @@
 #include <vector>
 using namespace std;
 
-class Node {
+class Node {  //Node defination //initial list
 public:
 	Node() { mContent = ' '; mMarker = false; }
 	~Node(){}
 	char content() { return mContent; }
 	void setContent(char c){ mContent = c; }
-	bool workMarker(){ return mMarker; }
+	bool wordMarker(){ return mMarker; }
 	void setWordMarker(){ mMarker = true; }
 	Node* findChild(char c);
 	void appendChild(Node* child) { mChildren.push_back(child); }
@@ -18,7 +18,7 @@ private:
 	bool mMarker;
 	vector<Node*> mChildren;
 };
-class Trie {
+class Trie {   //Trie defination 
 public:
 	Trie();
 	~Trie();
@@ -86,7 +86,7 @@ bool Trie::searchWord(string s)
 				return false;
 			current = tmp;
 		}
-		if (current->workMarker())
+		if (current->wordMarker())
 			return true;
 		else
 			return false;
@@ -97,5 +97,17 @@ int main()
 {
 	Trie* trie = new Trie();
 	trie->addWord("Hello");
+	trie->addWord("Balloon");
+	trie->addWord("Ball");
+	if (trie->searchWord("Hell"))
+		cout << "Found Hell" << endl;
+	if (trie->searchWord("Hello"))
+		cout << "Found Hello" << endl;
+	if (trie->searchWord("Helloo"))
+		cout << "Found Helloo" << endl;
+	if (trie->searchWord("Ball"))
+		cout << "Found Hell" << endl;
+	if (trie->searchWord("Balloon"))
+		cout << "Found Hell" << endl;
 	delete trie;
 }
