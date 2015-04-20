@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocalStaticObject", "LocalS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pointers to functions", "Pointers to functions\Pointers to functions.vcxproj", "{2B486D76-BD06-4B8F-8C4C-00B53C1BA463}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GenericPro", "GenericPro\GenericPro.vcxproj", "{1B32BE7E-635F-4E42-965C-C66C0BCE70C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{2B486D76-BD06-4B8F-8C4C-00B53C1BA463}.Debug|Win32.Build.0 = Debug|Win32
 		{2B486D76-BD06-4B8F-8C4C-00B53C1BA463}.Release|Win32.ActiveCfg = Release|Win32
 		{2B486D76-BD06-4B8F-8C4C-00B53C1BA463}.Release|Win32.Build.0 = Release|Win32
+		{1B32BE7E-635F-4E42-965C-C66C0BCE70C1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1B32BE7E-635F-4E42-965C-C66C0BCE70C1}.Debug|Win32.Build.0 = Debug|Win32
+		{1B32BE7E-635F-4E42-965C-C66C0BCE70C1}.Release|Win32.ActiveCfg = Release|Win32
+		{1B32BE7E-635F-4E42-965C-C66C0BCE70C1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
