@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeClass", "CodeClass\CodeClass.vcxproj", "{1376C640-97DB-442C-867F-94159BE363DF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Triangular", "Triangular\Triangular.vcxproj", "{AF67CF4A-6D78-4E4E-B26F-4505BF4D82E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FunctionObject", "FunctionObject\FunctionObject.vcxproj", "{8A2BE448-E4B1-418E-B1DC-EBFC2AFC4244}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointtoClassFunction", "PointtoClassFunction\PointtoClassFunction.vcxproj", "{581C1F41-02FB-45DF-A048-A6560FD5953D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1376C640-97DB-442C-867F-94159BE363DF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1376C640-97DB-442C-867F-94159BE363DF}.Debug|Win32.Build.0 = Debug|Win32
+		{1376C640-97DB-442C-867F-94159BE363DF}.Release|Win32.ActiveCfg = Release|Win32
+		{1376C640-97DB-442C-867F-94159BE363DF}.Release|Win32.Build.0 = Release|Win32
+		{AF67CF4A-6D78-4E4E-B26F-4505BF4D82E8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AF67CF4A-6D78-4E4E-B26F-4505BF4D82E8}.Debug|Win32.Build.0 = Debug|Win32
+		{AF67CF4A-6D78-4E4E-B26F-4505BF4D82E8}.Release|Win32.ActiveCfg = Release|Win32
+		{AF67CF4A-6D78-4E4E-B26F-4505BF4D82E8}.Release|Win32.Build.0 = Release|Win32
+		{8A2BE448-E4B1-418E-B1DC-EBFC2AFC4244}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8A2BE448-E4B1-418E-B1DC-EBFC2AFC4244}.Debug|Win32.Build.0 = Debug|Win32
+		{8A2BE448-E4B1-418E-B1DC-EBFC2AFC4244}.Release|Win32.ActiveCfg = Release|Win32
+		{8A2BE448-E4B1-418E-B1DC-EBFC2AFC4244}.Release|Win32.Build.0 = Release|Win32
+		{581C1F41-02FB-45DF-A048-A6560FD5953D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{581C1F41-02FB-45DF-A048-A6560FD5953D}.Debug|Win32.Build.0 = Debug|Win32
+		{581C1F41-02FB-45DF-A048-A6560FD5953D}.Release|Win32.ActiveCfg = Release|Win32
+		{581C1F41-02FB-45DF-A048-A6560FD5953D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

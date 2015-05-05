@@ -5,8 +5,8 @@ class num_sequence{
 public:
 	virtual ~num_sequence(){}
 	//=0 pure virtual function
-	virtual int elem(int pos) const=0; //return the pos elem //no need to give here virtual
-	virtual const char* what_am_i() const; //return a char* to represent the type
+	int elem(int pos) const=0; //return the pos elem //no need to give here virtual
+	virtual const char* what_am_i() const=0; //return a char* to represent the type
 	virtual ostream& print(ostream& os = cout) const=0; // print all the elems
 	static int max_elems(){ return 64; }; //return support max pos
 	int length() const { return _length; }
