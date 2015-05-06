@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4F617D45-926A-4725-9B11-618484806A30}</ProjectGuid>
+    <ProjectGuid>{D6B468E1-7F0B-4F01-A72E-2C224B015DB4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Inverted_list</RootNamespace>
   </PropertyGroup>
@@ -78,7 +78,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InvertedIndex.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InvertedIndex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
