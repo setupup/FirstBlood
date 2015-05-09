@@ -20,11 +20,11 @@ int main(int argc, char* argv[])
 	//size_t str_hash = hash_fn(str);
 
 	//cout << str_hash << endl;
-	unordered_map<int, string> myhashmap;
-	myhashmap[9527] = "Mr Tang want Mrs Qiu";
-	myhashmap[100000000] = "the millionare's happy life";
-	myhashmap[10000] = "This is called the bottom line of the salary";
-	if (myhashmap.find(9527) != myhashmap.end())
+	unordered_map<string, string> myhashmap;
+	myhashmap["the beginning part"] = "Mr Tang want Mrs Qiu";
+	myhashmap["the medium part"] = "the millionare's happy life";
+	myhashmap["the ending part"] = "This is called the bottom line of the salary";
+	if (myhashmap.find("the ending part") != myhashmap.end())
 	{
 		cout << "not the end" << endl;
 	}
