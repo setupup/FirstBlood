@@ -7,6 +7,7 @@
 using namespace std;
 int main()
 {
+	
 	Trie* trie = new Trie();
 	trie->addWord("Hello",1,1);
 	trie->addWord("Balloon",2,2);

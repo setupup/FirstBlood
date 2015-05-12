@@ -9,9 +9,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	ifstream ifs("inputs");
+	
 	InvertedIndex invertedIndex;
-	bool flag=invertedIndex.scanInput(ifs);
+	bool flag=invertedIndex.scanInput("inputs.txt");
 	if (flag)
 		invertedIndex.printContent();
 	else

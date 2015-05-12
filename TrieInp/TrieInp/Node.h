@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NODE_H_
+#define NODE_H_
 #include"Leaf.h"
 #include<iostream>
 #include<vector>
@@ -23,4 +24,5 @@ public:
 	bool mMarker;
 	vector<Node*> mChildren;
 };
+#endif
 

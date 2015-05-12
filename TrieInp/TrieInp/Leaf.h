@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LEAF_H_
+#define LEAF_H_
 #include<iostream>
 using namespace std;
 class Leaf{
@@ -14,3 +15,4 @@ public:
 	double lat;
 	double lon;
 };
+#endif

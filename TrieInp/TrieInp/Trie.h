@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRIE_H_
+#define TRIE_H_
 #include"Node.h"
 #include"Leaf.h"
 #include<iostream>
@@ -16,4 +17,5 @@ public:
 private:
 	Node* root;
 };
+#endif
 
