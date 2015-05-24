@@ -11,7 +11,7 @@ int main()
 {
 	double elapsetime;
 	
-	trie<std::string> t;
+	trie t;
 	fstream output("finalDMV.txt", ios_base::in|ios_base::app);
 
 	

@@ -1,5 +1,5 @@
 // Simple trie data structure using STL. Based on code by Vivek Narayanan.
-// - rlyeh, 2013 BOOST licensed ~~ listening to Baroness / March to the Sea.
+// 
 
 #pragma once
 #include<fstream>
@@ -12,7 +12,6 @@ typedef struct mix_data{
 	string value;
 	double coordinate[2];
 }Mixdata;
-template<typename T>
 class trie
 {
 public:
@@ -20,14 +19,14 @@ public:
 	trie() : flag(false)
 	{}
 
-	bool has(const T &collection) const {
+	bool has(const string &collection) const {
 		for (const auto &it : children) //like the usage of foreach
 		if (it.second.has(collection)) //recursive usage
 			return true;
 		return flag && collection == value ? true : false;
 	}
 
-	void insert(const T& collection) {
+	void insert(const string& collection) {
 		trie *node = this;
 		for (auto &c : collection) {
 			auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
@@ -37,7 +36,7 @@ public:
 		}
 		node->flag = true;
 	}
-	void insert(const T& collection, const double& first, const double& second) { //parameter overload
+	void insert(const string& collection, const double& first, const double& second) { //parameter overload
 		trie *node = this;
 		for (auto &c : collection) {
 			auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
@@ -62,7 +61,7 @@ public:
 		return result;
 	}
 	//list method list all the exist pointers
-	std::vector<const Mixdata*> list() const {
+	vector<const Mixdata*> list() const {
 		std::vector<const Mixdata*> results;
 
 		if (flag)	
@@ -79,7 +78,7 @@ public:
 		return results;
 	}
 	//complete method traverse the rest trie node
-	std::vector<const Mixdata *> complete(const string &prefix) const {
+	vector<const Mixdata *> complete(const string &prefix) const {
 		const trie *node = this;
 		int i = 0;
 		for (auto &elem : prefix) {
@@ -152,6 +151,6 @@ protected:
 	Mixdata mixdata;
 	bool flag; //represent whether its a leaf node
 	
-	std::map< typename T::value_type, trie > children;
+	map<string, trie > children;
 };
 
