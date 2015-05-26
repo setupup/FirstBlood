@@ -12,7 +12,12 @@ int main()
 	double elapsetime;
 	
 	trie t;
-	fstream output("finalDMV.txt", ios_base::in|ios_base::app);
+	
+	/*This is the preprocess region of the string*/
+	bool flag;
+	flag=t.preprocess();
+	
+	//fstream output("finalDMV.txt", ios_base::in|ios_base::app);
 
 	
 	/*t.insert("wargame",1,1);
@@ -31,26 +36,26 @@ int main()
 	//}
 	
 	
-	string dmv;
-	double coordinate[2];
-	output.seekg(0); //
-	double start = GetTickCount();
-	while (output >> dmv) //output format text co1 co2
-	{
-		output >> coordinate[0] >> coordinate[1];
-		t.insert(dmv,coordinate[0],coordinate[1]);
-	}
-	double end = GetTickCount();
-	cout << end-start << endl;
+	//string dmv;
+	//double coordinate[2];
+	//output.seekg(0); //
+	//double start = GetTickCount();
+	//while (output >> dmv) //output format text co1 co2
+	//{
+	//	output >> coordinate[0] >> coordinate[1];
+	//	t.insert(dmv,coordinate[0],coordinate[1]);
+	//}
+	//double end = GetTickCount();
+	//cout << end-start << endl;
 	//t.printlist(t.complete("wo"));
-	start = GetTickCount();
-	auto list = t.complete("pl");
-	end = GetTickCount();
-	cout << end-start << endl;
-	double left[2] = { 48.0, -125.0 };
-	double right[2] = { 31, -83 };
-	auto result = t.singleGeoQuery(list,left ,right );
-	t.printlist(list);
+	//start = GetTickCount();
+	//auto list = t.complete("pl");
+	//end = GetTickCount();
+	//cout << end-start << endl;
+	//double left[2] = { 48.0, -125.0 };
+	//double right[2] = { 31, -83 };
+	//auto result = t.singleGeoQuery(list,left ,right );
+	//t.printlist(list);
 	
 	
 	

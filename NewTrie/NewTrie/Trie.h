@@ -12,42 +12,48 @@ typedef struct mix_data{
 	string value;
 	double coordinate[2];
 }Mixdata;
+typedef struct region_{
+	double leftupper[2];
+	double rightdown[2];
+}Region;
 class trie
 {
 public:
 
 	trie() : flag(false)
 	{}
+	bool preprocess();
 
 	bool has(const string &collection) const {
 		for (const auto &it : children) //like the usage of foreach
 		if (it.second.has(collection)) //recursive usage
 			return true;
-		return flag && collection == value ? true : false;
+		return flag && collection == mixdata.value ? true : false;
 	}
+	void insertAll();
 
-	void insert(const string& collection) {
-		trie *node = this;
-		for (auto &c : collection) {
-			auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
-			if (found == node->children.end()) //cannot find
-				node->children[c] = trie(node->mixdata.value + c); //root node orgin value is ''
-			node = &(node->children[c]);
-		}
-		node->flag = true;
-	}
-	void insert(const string& collection, const double& first, const double& second) { //parameter overload
-		trie *node = this;
-		for (auto &c : collection) {
-			auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
-			if (found == node->children.end()) //cannot find
-				node->children[c] = trie(node->mixdata.value + c); //root node orgin value is ''
-			node = &(node->children[c]);
-		}
-		node->flag = true;
-		node->mixdata.coordinate[0] = first;
-		node->mixdata.coordinate[1] = second;
-	}
+	//void insert(const string& collection) {
+	//	trie *node = this;
+	//	for (auto &c : collection) {
+	//		auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
+	//		if (found == node->children.end()) //cannot find
+	//			node->children[c] = trie(node->mixdata.value + c); //root node orgin value is ''
+	//		node = &(node->children[c]);
+	//	}
+	//	node->flag = true;
+	//}
+	//void insert(const string& collection, const double& first, const double& second) { //parameter overload
+	//	trie *node = this;
+	//	for (auto &c : collection) {
+	//		auto found = node->children.find(c); //first part of children is a char second is a trie(subtree) children is a pair set pair<key,value>
+	//		if (found == node->children.end()) //cannot find
+	//			node->children[c] = trie(node->mixdata.value + c); //root node orgin value is ''
+	//		node = &(node->children[c]);
+	//	}
+	//	node->flag = true;
+	//	node->mixdata.coordinate[0] = first;
+	//	node->mixdata.coordinate[1] = second;
+	//}
 	vector<const Mixdata*> singleGeoQuery(vector<const Mixdata*>& data,double upleft[],double downright[]){
 		vector<const Mixdata*> result;
 		for (const auto& lt : data)
@@ -143,14 +149,21 @@ public:
 
 protected:
 
-	trie(const string& _value) : flag(false)
+	trie(const string& _value,double lu[2],double rd[2]) : flag(false)
 	{
 		mixdata.value = _value;
+		region.leftupper[0] = lu[0];
+		region.leftupper[1] = lu[1];
+		region.rightdown[0] = rd[0];
+		region.rightdown[1] = rd[1];
+
+
 	}
 
 	Mixdata mixdata;
 	bool flag; //represent whether its a leaf node
+	Region region;
 	
-	map<string, trie > children;
+	multimap<string::value_type, trie > children;  //the first parameter should be char here
 };
 
