@@ -51,6 +51,35 @@ public:
 		}
 		return results;
 	}
+	vector<vector<const Mixdata*>> list(vector<double> cen) const {
+		vector<vector<const Mixdata*>> results(4);
+		if (flag) //exit
+		{
+			if (md_.coordinate[0]<cen[0]&&md_.coordinate[1]<cen[1])
+				results[0].push_back(&md_);  //what is the address mean// explanation, as the results defination is pointer *
+			if (md_.coordinate[0]>cen[0] && md_.coordinate[1] < cen[1])
+				results[1].push_back(&md_);
+			if (md_.coordinate[0]>cen[0] && md_.coordinate[1] > cen[1])
+				results[2].push_back(&md_);
+			if (md_.coordinate[0]<cen[0] && md_.coordinate[1] > cen[1])
+				results[3].push_back(&md_);
+		}
+			
+		//can learn from this
+		for (const auto& it : children) {
+			auto values = it.second.list(cen); //recursive from the subtree //is this really necessary
+			//I prefer to write the it.second.list()  //explanation look at line 39
+			for (const auto &value : values[0])
+				results[0].push_back(value); 
+			for (const auto &value : values[1])
+				results[0].push_back(value);
+			for (const auto &value : values[2])
+				results[0].push_back(value);
+			for (const auto &value : values[3])
+				results[0].push_back(value);
+		}
+		return results;
+	}
 	//complete method traverse the rest otrie node
 	vector<const Mixdata *> complete(const string &prefix) const {
 		const otrie *node = this;

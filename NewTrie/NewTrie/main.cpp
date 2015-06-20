@@ -9,10 +9,10 @@ using namespace std;
 int main()
 {
 	//double elapsetime;
-	double start = GetTickCount();
+	double Indexstart = GetTickCount();
 	trie t;
 	otrie ot;
-	ifstream input("finally1000.txt");
+	ifstream input("finally20000.txt");
 	//while (input >> temp)
 	//{
 	//	t.generate_DMV(temp, output);
@@ -28,6 +28,17 @@ int main()
 	}	
 	//finish the constructure for the otrie
 	t.insert_all(&ot);
+	double Indexend=GetTickCount();
+	cout << "Index Building Time" << "\t" << Indexend - Indexstart << endl;
+	double querystart = GetTickCount();
+	Region region;
+	region.x = 50;
+	region.y = -160;
+	region.width = 10;
+	region.height = 10;
+	auto list=t.complete("ak", region);
+	auto listfinal = t.singleGeoQuery(list,region);
+	t.printlist(listfinal);
 	//fstream output("finalDMV.txt", ios_base::in|ios_base::app);
 	/*t.insert("wargame",1,1);
 	t.insert("wombat",2,2);
@@ -52,8 +63,8 @@ int main()
 	//	output >> coordinate[0] >> coordinate[1];
 	//	t.insert(dmv,coordinate[0],coordinate[1]);
 	//}
-	double end = GetTickCount();
-	cout << end-start << endl;
+	double queryend = GetTickCount();
+	cout <<"Query Execute Time"<<"\t"<< queryend-querystart << endl;
 	//t.printlist(t.complete("wo"));
 	//start = GetTickCount();
 	//auto list = t.complete("pl");
