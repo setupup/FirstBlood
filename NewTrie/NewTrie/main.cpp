@@ -41,7 +41,7 @@ int main()
 		queryin >> region.y;
 		region.width = 10;
 		region.height = 10;
-		auto list = t.complete(prefix.substr(0,2), region);
+		auto list = t.complete(prefix.substr(0,5), region);
 		auto listfinal = t.singleGeoQuery(list, region);
 	}
 	//t.printlist(listfinal);
@@ -83,14 +83,3 @@ int main()
 	std::cout << "All ok." << std::endl;
 	return 0;
 }
-
-//assert(t.size() == 5);
-//assert(t.has("war") == false);
-//assert(t.has("wargame") == true);
-
-//auto candidates = t.complete("wo");
-//assert(candidates.size() == 4);
-
-//candidates = t.complete("warg");
-//assert(candidates.size() == 1);
-//assert(*candidates[0] == "wargame");
